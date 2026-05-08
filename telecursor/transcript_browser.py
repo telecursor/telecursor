@@ -39,7 +39,7 @@ def slugify_workspace(workspace: str) -> str:
     """Convert /Users/foo/bar -> Users-foo-bar (Cursor's project-dir naming)."""
     p = Path(workspace).expanduser().resolve()
     s = str(p).lstrip("/")
-    return s.replace("/", "-")
+    return s.replace("/", "-").replace(" ", "-")
 
 
 def transcripts_dir(workspace: str) -> Path:
