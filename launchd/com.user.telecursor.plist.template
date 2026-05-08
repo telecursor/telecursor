@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  launchd template for telecursor.
+
+  To install:
+
+      mkdir -p ~/Library/Logs/telecursor
+      sed \
+        -e "s|__PROJECT_DIR__|$HOME/workspace/telecursor|g" \
+        -e "s|__HOME__|$HOME|g" \
+        launchd/com.user.telecursor.plist.template \
+        > ~/Library/LaunchAgents/com.user.telecursor.plist
+
+      launchctl load   ~/Library/LaunchAgents/com.user.telecursor.plist
+      launchctl start  com.user.telecursor
+
+  launchd does NOT read .env files. Either:
+    (a) source .env in a wrapper shell script and point ProgramArguments at it, or
+    (b) inline the values you need (TELEGRAM_BOT_TOKEN, CURSOR_API_KEY,
+        TG_ALLOWED_USER_IDS, DEFAULT_WORKSPACE) into the EnvironmentVariables
+        block below.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.user.telecursor</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>__PROJECT_DIR__/.venv/bin/telecursor</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>__PROJECT_DIR__</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>__HOME__/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    <!-- Inline secrets here if you don't wrap with a .env-sourcing shell:
+    <key>TELEGRAM_BOT_TOKEN</key>
+    <string></string>
+    <key>CURSOR_API_KEY</key>
+    <string></string>
+    <key>TG_ALLOWED_USER_IDS</key>
+    <string></string>
+    <key>DEFAULT_WORKSPACE</key>
+    <string></string>
+    -->
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>ThrottleInterval</key>
+  <integer>30</integer>
+
+  <key>StandardOutPath</key>
+  <string>__HOME__/Library/Logs/telecursor/daemon.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>__HOME__/Library/Logs/telecursor/daemon.err.log</string>
+</dict>
+</plist>

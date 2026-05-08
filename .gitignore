@@ -1,0 +1,34 @@
+# Secrets
+.env
+.envrc
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+dist/
+pip-wheel-metadata/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editors / IDEs
+.idea/
+.vscode/
+.cursor/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local runtime
+*.log
+*.bak
+*.bak.*
+
+# State directory if a developer points it at the repo root
+state.json

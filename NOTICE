@@ -1,0 +1,13 @@
+telecursor
+Copyright 2026 Sam Dhar
+
+This product includes software developed by Sam Dhar.
+
+Licensed under the Apache License, Version 2.0 (the "License").
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+This product depends on third-party packages distributed under their own
+licenses. See the dependency manifests (pyproject.toml) for the canonical
+list of runtime dependencies.
