@@ -155,7 +155,12 @@ class Bridge:
             await update.effective_chat.send_message("Usage: /cd <path>")
             return
         raw = " ".join(ctx.args).strip()
-        new_ws = str(Path(raw).expanduser().resolve())
+        path = Path(raw).expanduser()
+        if not path.is_absolute():
+            state = self.store.get(chat_id)
+            base = Path(state.workspace or self.default_workspace)
+            path = base / path
+        new_ws = str(path.resolve())
         if not Path(new_ws).is_dir():
             await update.effective_chat.send_message(f"Not a directory: {new_ws}")
             return
