@@ -42,9 +42,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/samdhar/telecursor"
-Repository = "https://github.com/samdhar/telecursor"
-Issues = "https://github.com/samdhar/telecursor/issues"
+Homepage = "https://github.com/telecursor/telecursor"
+Repository = "https://github.com/telecursor/telecursor"
+Issues = "https://github.com/telecursor/telecursor/issues"
 
 [project.scripts]
 telecursor = "telecursor.daemon:main"

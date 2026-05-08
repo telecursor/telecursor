@@ -37,7 +37,7 @@ A small Python daemon that long-polls Telegram, forwards each DM to the local Cu
 
 ## Features
 
-- **Real `agent` runs from Telegram** — every DM becomes a `agent -p --force --approve-mcps --workspace <dir>` invocation. Edits files, runs shell, the full agent surface.
+- **Real `agent` runs from Telegram** — every DM becomes an `agent -p --force --approve-mcps --workspace <dir>` invocation. Edits files, runs shell, the full agent surface.
 - **Multi-turn per chat** — first message creates a Cursor session; subsequent messages `--resume` it automatically.
 - **Per-chat workspace** — `/cd <path>` retargets the agent's working tree without restarting the daemon.
 - **Formatted replies** — uses [`telegramify-markdown`](https://github.com/sudoskys/telegramify-markdown) so the agent's GitHub-flavored markdown renders properly. Long code blocks become `.py`/`.md` file attachments instead of walls of text.
@@ -62,7 +62,7 @@ A small Python daemon that long-polls Telegram, forwards each DM to the local Cu
 ## Quick start
 
 ```bash
-git clone https://github.com/samdhar/telecursor
+git clone https://github.com/telecursor/telecursor
 cd telecursor
 
 python3 -m venv .venv
@@ -238,7 +238,7 @@ Your `.env` isn't being loaded. The daemon uses `python-dotenv`'s `load_dotenv()
 ## Development
 
 ```bash
-git clone https://github.com/samdhar/telecursor
+git clone https://github.com/telecursor/telecursor
 cd telecursor
 python3 -m venv .venv
 source .venv/bin/activate
