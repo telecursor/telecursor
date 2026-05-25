@@ -78,7 +78,7 @@ class Bridge:
             "DEFAULT_WORKSPACE", str(Path.home())
         )
         self.model = os.environ.get("AGENT_MODEL") or None
-        self.timeout = float(os.environ.get("AGENT_TIMEOUT_SEC", "600"))
+        self.timeout = float(os.environ.get("AGENT_TIMEOUT_SEC", "0") or "0")
         self.store = SessionStore()
         self._chat_locks: dict[int, asyncio.Lock] = defaultdict(asyncio.Lock)
         # In-memory only: chat_id -> {"target": <chat_uuid>, "expires_at": <epoch>}.

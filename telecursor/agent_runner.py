@@ -138,9 +138,12 @@ async def run_agent(
         cwd=workspace,
     )
     try:
-        stdout_b, stderr_b = await asyncio.wait_for(
-            proc.communicate(), timeout=timeout_sec
-        )
+        if timeout_sec:
+            stdout_b, stderr_b = await asyncio.wait_for(
+                proc.communicate(), timeout=timeout_sec
+            )
+        else:
+            stdout_b, stderr_b = await proc.communicate()
     except asyncio.TimeoutError:
         proc.kill()
         await proc.wait()
